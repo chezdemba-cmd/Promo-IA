@@ -1,0 +1,12 @@
+node_modules/
+.next/
+.vercel
+.npm-cache/
+backups/
+*.tsbuildinfo
+next-env.d.ts
+
+# Secrets : tout .env sauf le modèle
+.env
+.env.*
+!.env.example
