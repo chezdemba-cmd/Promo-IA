@@ -8,7 +8,9 @@ import { db } from '@/lib/supabase';
  */
 export const dynamic = 'force-dynamic';
 
-const STALE_SCHEDULER_MS = 90 * 60 * 1000; // cron horaire (vercel.json) + marge
+// vercel.json = cron quotidien (limite plan Hobby). Un cron externe (cron-job.org)
+// qui appelle /api/cron/scheduler plus souvent réduit d'autant ce délai réel.
+const STALE_SCHEDULER_MS = Number(process.env.SCHEDULER_STALE_MS) || 26 * 60 * 60 * 1000;
 
 export async function GET() {
   const checks = { database: 'down', scheduler: 'unknown' };

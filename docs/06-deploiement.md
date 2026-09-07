@@ -13,7 +13,7 @@ Le MVP tient entièrement sur Vercel (frontend + API + cron) + Supabase. Railway
 2. https://vercel.com → Add New Project → importer le repo. Framework détecté : Next.js, aucun réglage à changer.
 3. **Environment Variables** : copier toutes les variables de `.env.example` avec les vraies valeurs (ADMIN_PASSWORD, SESSION_SECRET, NEXT_PUBLIC_SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY, ANTHROPIC_API_KEY, WHATSAPP_VERIFY_TOKEN, WHATSAPP_APP_SECRET, CRON_SECRET, DEMO_MODE).
 4. Deploy. Notez l'URL de production.
-5. **Cron** : `vercel.json` déclare `/api/cron/scheduler` toutes les heures (`0 * * * *`, compatible Hobby ; passer à `*/5 * * * *` nécessite un plan Pro) — Vercel l'active automatiquement au déploiement et ajoute le header `Authorization: Bearer $CRON_SECRET` si la variable `CRON_SECRET` existe.
+5. **Cron** : `vercel.json` déclare `/api/cron/scheduler` une fois par jour (`0 6 * * *` — limite du plan Hobby ; `*/5 * * * *` nécessite Pro). Vercel l'active au déploiement et ajoute le header `Authorization: Bearer $CRON_SECRET` si la variable existe. Pour des envois plus fréquents sans Pro : cron externe, voir `docs/15-cron.md`.
 6. **Webhook Meta** : configurer la Callback URL avec l'URL de production (docs/05, section A.4).
 
 ## Vérifications post-déploiement

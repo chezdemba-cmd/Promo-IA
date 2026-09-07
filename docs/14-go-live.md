@@ -46,7 +46,7 @@ Toutes obligatoires ; l'application refuse de démarrer / renvoie 503 si une val
 
 ## 3. Déploiement — `Gate 8`
 
-- [ ] Cron : `vercel.json` planifie `/api/cron/scheduler` **toutes les heures** (`0 * * * *`) — compatible Hobby. Pour repasser à 5 min (`*/5 * * * *`) il faut un plan Pro. Rappels / envois programmés en retard d'au plus 1 h en horaire.
+- [ ] Cron : `vercel.json` planifie `/api/cron/scheduler` **une fois par jour** (`0 6 * * *`) — seule fréquence permise en Hobby. Pour des envois réactifs sans plan Pro, configurer un **cron externe** (cron-job.org) toutes les 5 min → voir `docs/15-cron.md`.
 - [ ] Déploiement effectué, build Vercel vert.
 - [ ] DNS + HTTPS OK sur le domaine final.
 - [ ] `maxDuration` des routes d'envoi (60 s) compatible avec les limites du plan.
