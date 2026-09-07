@@ -46,7 +46,7 @@ Toutes obligatoires ; l'application refuse de démarrer / renvoie 503 si une val
 
 ## 3. Déploiement — `Gate 8`
 
-- [ ] Plan Vercel **compatible cron toutes les 5 min** (Hobby = 1×/jour → insuffisant, voir `vercel.json`).
+- [ ] Cron : `vercel.json` planifie `/api/cron/scheduler` **toutes les heures** (`0 * * * *`) — compatible Hobby. Pour repasser à 5 min (`*/5 * * * *`) il faut un plan Pro. Rappels / envois programmés en retard d'au plus 1 h en horaire.
 - [ ] Déploiement effectué, build Vercel vert.
 - [ ] DNS + HTTPS OK sur le domaine final.
 - [ ] `maxDuration` des routes d'envoi (60 s) compatible avec les limites du plan.
@@ -88,7 +88,7 @@ Toutes obligatoires ; l'application refuse de démarrer / renvoie 503 si une val
 
 - [ ] Collecteur d'erreurs branché (les routes loguent `event: request_failed` avec `requestId`).
 - [ ] Alerte si `/api/health` ≠ 200.
-- [ ] Alerte si `settings.scheduler_last_success` vieillit de plus de ~20 min (cron muet).
+- [ ] Alerte si `settings.scheduler_last_success` vieillit de plus de ~90 min (cron horaire muet ; seuil dans `/api/health`).
 - [ ] Politique de rétention des logs définie (les erreurs peuvent contenir du texte libre).
 
 ## 8. Performance — `R15` (après mise en charge, non bloquant go-live)

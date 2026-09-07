@@ -65,6 +65,6 @@ Procédure complète et ordonnée : **`docs/14-go-live.md`**.
 - **Recette réelle** — parcours Meta de bout en bout : templates approuvés, image / sans image, statuts non régressifs, STOP, message de session, rejeu webhook, envois concurrents. Runbook §5.
 - **R19** — brancher `scripts/backup.sh` en cron hors compte Supabase + premier test de restauration réel avec rapprochement Meta. Runbook §6.
 - **R15 (perf)** — exécuter `supabase/EXPLAIN.sql` sur une copie à volumes représentatifs ; viser zéro `Seq Scan` sur `contacts` / `messages`. Runbook §8.
-- **Déploiement** — plan Vercel compatible cron 5 min, HTTPS, `scripts/smoke.sh` vert après chaque mise en prod. Runbook §3–4.
+- **Déploiement** — cron horaire (`vercel.json`, compatible Hobby ; Pro requis pour 5 min), HTTPS, `scripts/smoke.sh` vert après chaque mise en prod. Runbook §3–4.
 - **Observabilité** — collecteur d'erreurs + alertes `/api/health` et cron muet. Runbook §7.
 - **Rollback** — redeploy testé + compatibilité descendante des migrations. Runbook §9.

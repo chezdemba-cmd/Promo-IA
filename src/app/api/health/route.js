@@ -8,7 +8,7 @@ import { db } from '@/lib/supabase';
  */
 export const dynamic = 'force-dynamic';
 
-const STALE_SCHEDULER_MS = 20 * 60 * 1000; // le cron tourne toutes les 5 min
+const STALE_SCHEDULER_MS = 90 * 60 * 1000; // cron horaire (vercel.json) + marge
 
 export async function GET() {
   const checks = { database: 'down', scheduler: 'unknown' };
